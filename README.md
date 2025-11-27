@@ -155,10 +155,6 @@ Footer (9 bytes):
   - Smaller seek table overhead
   - Slower seeking (more data to decompress per seek)
 
-## License
-
-(Add your license here)
-
 ## Contributing
 
 Contributions are welcome! Please ensure:
