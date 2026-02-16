@@ -142,6 +142,14 @@ func (r *reader) Seek(offset int64, whence int) (int64, error) {
 		return 0, errors.New("invalid whence")
 	}
 
+	if newOffset == r.totalUncompressedDataSize {
+		r.currentFrameIndex = r.seekTable.NumEntries()
+		r.currentFrameLoaded = false
+		r.currentFrameReaded = 0
+		r.offset = newOffset
+		return int64(newOffset), nil
+	}
+
 	if newOffset > r.totalUncompressedDataSize {
 		return 0, errors.New("offset beyond end of data")
 	}
